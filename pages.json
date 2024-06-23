@@ -1,0 +1,115 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
+			"^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
+			"^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue"
+		}
+	},
+	"pages": [
+		{
+			"path": "pages/startupPage/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/evidenceMenu/index",
+			"style": {
+				"navigationBarTitleText": "档案"
+			}
+		},
+		{
+			"path": "pages/documents/index",
+			"style": {
+				"navigationBarTitleText": "档案"
+			}
+		},
+		{
+			"path": "pages/personalCenter/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/upImgDisplay/index",
+			"style": {
+				"navigationBarTitleText": "导入证据"
+			}
+		},
+		{
+			"path": "pages/previewEvidence/index",
+			"style": {
+				"navigationBarTitleText": "预览"
+			}
+		},
+		{
+			"path": "pages/personalCenter/userInfo",
+			"style": {
+				"navigationBarTitleText": "账户"
+			}
+		},
+
+		{
+			"path": "pages/file/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "证据宝",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#228be6",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"fontSize": "15px",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "/static/image/home.png",
+				"selectedIconPath": "static/image/homeSe.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/documents/index",
+				"iconPath": "/static/image/files.png",
+				"selectedIconPath": "static/image/filesSe.png",
+				"text": "档案"
+			},
+			{
+				"pagePath": "pages/evidenceMenu/index",
+				"iconPath": "/static/image/list.png",
+				"selectedIconPath": "static/image/listSe.png",
+				"text": "目录"
+			},
+			{
+				"pagePath": "pages/personalCenter/index",
+				"iconPath": "/static/image/my.png",
+				"selectedIconPath": "static/image/mySe.png",
+				"text": "我的"
+			}
+		],
+		"midButton": {
+			"width": "60px",
+			"height": "65px",
+			"iconPath": "/static/image/camera.png",
+			"iconWidth": "50px"
+		}
+	},
+	"uniIdRouter": {},
+	"lazyCodeLoading": "requiredComponents"
+}
