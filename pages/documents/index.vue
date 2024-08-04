@@ -73,7 +73,6 @@
 				</view>
 			</view>
 		</uni-popup>
-		<!-- 证据文件 -->
 		<uni-popup class="del-class" ref="deleteBox" type="dialog">
 			<uni-popup-dialog cancelText="取消" confirmText="确认删除" title="删除" 
 				:content="deleteBoxInfo" @confirm="boxConfirm" @close="boxClose">

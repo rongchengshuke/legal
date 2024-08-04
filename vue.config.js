@@ -3,7 +3,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://39.107.139.52', // 后端服务地址
+        target: 'http://blb-api.rongchengshuke.com', // 后端服务地址
         changeOrigin: true, // 允许webSocket跨域
         ws: true,
         pathRewrite: {

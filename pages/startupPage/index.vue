@@ -1,15 +1,14 @@
 <template>
   <view class="container">
     <image class="bg" src="../../static/image/qidong.png" mode="" />
-    <image class="wenzi" src="../../static/image/zhengjubao.png" mode="" />
+    <!-- <image class="wenzi" src="../../static/image/zhengjubao.png" mode="" /> -->
+     <view class="titles">病历宝</view>
   </view>
 </template>
 <script>
 	export default {
 		data() {
-			return {
-				
-			}
+			return {}
 		},
 		onShow() {
       setTimeout(() => {
@@ -39,6 +38,18 @@
       width: 240rpx;
       height: 60rpx;
       margin-top: 90rpx;
+    }
+    .titles {
+      width: 440rpx;
+      height: 60rpx;
+      margin-top: 90rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80rpx;
+      font-style:italic;
+      letter-spacing: 10rpx;
+      font-weight: 600;
     }
   }
 </style>

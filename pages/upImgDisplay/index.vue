@@ -11,7 +11,7 @@
 		<!-- 	<uni-table border stripe>
 				<uni-tr>
 					<uni-th width="50" align="center">序号</uni-th>
-					<uni-th width="100" align="center">证据名称</uni-th>
+					<uni-th width="100" align="center">病历名称</uni-th>
 					<uni-th width="150" align="center">证明对象</uni-th>
 					<uni-th width="50" align="center">页码</uni-th>
 				</uni-tr>
@@ -20,7 +20,7 @@
 					<uni-td align="center" v-if="item.nameRowspan>0" :rowspan="item.nameRowspan">{{ item.name }}</uni-td>
 					<uni-td align="center">
 						{{ item.obj }}
-						<div class="color-class" @click="preview(item.url)">证据图片</div>
+						<div class="color-class" @click="preview(item.url)">病历图片</div>
 					</uni-td>
 					<uni-td align="center" v-if="item.page_rangeRowspan>0" :rowspan="item.page_rangeRowspan">{{ item.page_range }}</uni-td>
 				</uni-tr>
@@ -29,7 +29,7 @@
 			    <thead>
 			      <tr>
 			        <th width="50" align="center">序号</th>
-			        <th width="80" align="center">证据名称</th>
+			        <th width="80" align="center">病历名称</th>
 			        <th width="150" align="center">证明对象</th>
 			        <th width="50" align="center">页码</th>
 			      </tr>
@@ -40,7 +40,7 @@
 			        <td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.name }}</td>
 			        <td align="center">
 			          {{ item.obj }}
-			          <div class="color-class" @click="preview(item.url)">证据图片</div>
+			          <div class="color-class" @click="preview(item.url)">病历图片</div>
 			        </td>
 			        <td align="center" v-if="item.page_rangeRowspan > 0" :rowspan="item.page_rangeRowspan">{{ item.page_range }}</td>
 			      </tr>

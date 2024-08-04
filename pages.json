@@ -42,7 +42,7 @@
 		{
 			"path": "pages/upImgDisplay/index",
 			"style": {
-				"navigationBarTitleText": "导入证据"
+				"navigationBarTitleText": "导入病历"
 			}
 		},
 		{
@@ -67,7 +67,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "证据宝",
+		"navigationBarTitleText": "病历宝",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

@@ -4,14 +4,46 @@
 		<view class="bgliner">
 			<view class="search-area">
 				<view class="search-area-input">
-					<uni-easyinput suffixIcon="search" v-model="valueSearch" placeholder="请输入关键字" 
-						@iconClick="iconClick" />
+					<uni-easyinput suffixIcon="search" v-model="valueSearch" placeholder="请输入关键字" @iconClick="iconClick" />
+					<uni-icons class="set-icon" type="settings" size="40" @click="filterTime" />
 				</view>
 			</view>
+			<uni-drawer ref="showRight" mode="right" :mask-click="true">
+				<scroll-view class="drawer-box" scroll-y="true">
+					<uni-easyinput class="uni-mt-5" suffixIcon="search" v-model="planName" 
+						placeholder="请输入关键字" @iconClick="searchClick"></uni-easyinput>
+					<uni-row  class="time-box">
+						<uni-col :span="8">
+							<button type="default" size="mini" @click="clickTime('1')">今天</button>
+						</uni-col>
+						<uni-col :span="8">
+							<button type="default" size="mini" @click="clickTime('1')">近一周</button>
+						</uni-col>
+						<uni-col :span="8">
+							<button class="btn" type="default" size="mini" @click="clickTime('1')">近一个月</button>
+						</uni-col>
+					</uni-row >
+					<view class="times-ranges">
+						<uni-datetime-picker type="date" :clear-icon="false" v-model="startTime" />
+						<span class="lines">-</span>
+						<uni-datetime-picker type="date" :clear-icon="false" v-model="endTime" />
+					</view>
+					<uni-row class="button-box">
+						<uni-col :span="10">
+							<button class="reset-btn" @click="closeDrawer" type="default">重置</button>
+						</uni-col>
+						<uni-col :span="4"></uni-col>
+						<uni-col :span="10">
+							<button class="submit-btn" @click="confirmDrawer" type="primary">确认</button>
+						</uni-col>
+					</uni-row>
+				</scroll-view>
+			</uni-drawer>
+
 			<view class="nav-area">
 				<view class="nav-item" @click="upPopupOpen">
 					<image class="feature" src="../../static/image/feature1.png" mode="" />
-					<text class="title">导入证据</text>
+					<text class="title">导入病历</text>
 				</view>
 				<view class="nav-item" @click="newFolder">
 					<image class="feature" src="../../static/image/feature2.png" mode="" />
@@ -47,7 +79,7 @@
 			</view>
 		</view>
 		
-		<!-- 导入证据选择弹窗 --开始-->
+		<!-- 导入病历选择弹窗 --开始-->
 		<uni-popup id="upPopup" ref="upPopup" type="center" background-color="#FFFFFF">
 			<view class="nav-area upImg-area">
 				<view class="nav-item" @click="handleUpImg(1)">
@@ -84,10 +116,13 @@
 		data() {
 			return {
 				title: 'Hello',
-				titleName: '证据宝',
+				titleName: '病历宝',
 				dataList: [],
 				valueInput: '',
-				valueSearch: ''
+				valueSearch: '',
+				planName: '',
+				startTime: '',
+				endTime: ''
 			}
 		},
 		onShow() {
@@ -95,9 +130,26 @@
 			this.$refs.upPopup && this.$refs.upPopup.close()
 		},
 		methods: {
-			iconClick() {
-
+			filterTime() {
+				this.$refs.showRight.open();
 			},
+			searchClick() {
+				this.getHistoricalRecord()
+				this.$refs.showRight.close()
+			},
+			closeDrawer() {
+				this.valueSearch = ''
+				this.startTime = ''
+				this.endTime = ''
+				this.planName = ''
+				this.getHistoricalRecord()
+				this.$refs.showRight.close()
+			},
+			confirmDrawer() {
+				this.getHistoricalRecord()
+				this.$refs.showRight.close()
+			},
+			iconClick() {},
 			navigateBackFn() {
 				uni.navigateBack({
 					delta: 1
@@ -186,7 +238,6 @@
 			cancelFn() {
 				this.$refs.documents.close()
 			},
-			// 新建文件夹确定成功
 			btnFn() {
 				api.myGSSMainRequest({
 					url: '/api/category/add',
@@ -210,6 +261,12 @@
 				api.myGSSMainRequest({
 					url: '/api/task/list',
 					method: 'GET',
+					data: {
+						valueSearch: this.valueSearch,
+						planName: this.planName,
+						startTime: this.startTime,
+						endTime: this.endTime
+					}
 				}).then((res) => {
 					if (res.code === 200) {
 						this.dataList = res.data
@@ -225,6 +282,45 @@
 			},
 			timestamp(time) {
 				return utils.convertTimestamp(time)
+			},
+			// ----时间----
+			addLeadingZero(number) {
+				if (number < 10) {
+					return "0" + number;
+				}
+				return number;
+			},
+			getTime(time) {
+  			let year = time.getFullYear();
+  			let month = time.getMonth() + 1;
+  			let day = time.getDate();
+  			let formattedDate = year + "-" + this.addLeadingZero(month) + "-" + this.addLeadingZero(day);
+				return formattedDate
+			},
+			getWeekTime() {
+				let time = (new Date).getTime() - 7 * 24 * 60 * 60 * 1000;
+        let tragetTime = new Date(time);
+        tragetTime = tragetTime.getFullYear() + "-" + (tragetTime.getMonth()> 9 
+					? (tragetTime.getMonth() + 1) : "0" + (tragetTime.getMonth() + 1)) + "-" + (tragetTime.getDate()> 9 ? (tragetTime.getDate()) 
+					: "0" + (tragetTime.getDate()));
+        return tragetTime;
+			},
+			clickTime(type) {
+				let currentDate = new Date();
+  			currentDate.setMonth(currentDate.getMonth() - 1);
+				const todayTime = this.getTime(new Date());
+				const weekTime = this.getWeekTime();
+				const monthTime = this.getTime(currentDate)
+				if (type === '1') {
+					this.startTime = todayTime
+					this.endTime = todayTime
+				} else if (type === '2') {
+					this.startTime = weekTime
+					this.endTime = todayTime
+				} else if (type === '3') {
+					this.startTime = monthTime
+					this.endTime = todayTime
+				}
 			}
 		}
 	}
@@ -237,10 +333,13 @@
 	}
 	.search-area {
 		display: flex;
-		padding: 0rpx 40rpx;
+		padding: 0rpx 20rpx;
 		margin-bottom: 20rpx;
 		&-input{
 			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 			::v-deep .is-input-border {
 				height: 80rpx;
 				border-radius: 98rpx;
@@ -250,6 +349,9 @@
 			::v-deep .uni-icons {
 				color: #000000!important;
 				margin-right: 10rpx;
+			}
+			.set-icon {
+				margin-left: 20rpx;
 			}
 		}
 	}
@@ -375,6 +477,44 @@
 		}
 		.btn1, .btn2 {
 			flex: 1;
+		}
+	}
+	::v-deep .uni-drawer__content {
+		width: 600rpx!important;
+		padding: 20rpx!important;
+		.drawer-box {
+			.button-box {
+				width: 100%;
+				margin-top: 20rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				.reset-btn {
+					background: #F59B22;
+					color: #FFFFFF;
+				}
+				.submit-btn {
+					background: #009DFF;
+					color: #FFFFFF;
+				}
+			}
+			.times-ranges {
+				display: flex;
+				align-items: center;
+				margin-top: 20rpx;
+				.lines {
+					margin: 0px 3px;
+				}
+			}
+		}
+	}
+	::v-deep .time-box {
+		margin-top: 20rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.btn {
+			float: right!important;
 		}
 	}
 </style>
