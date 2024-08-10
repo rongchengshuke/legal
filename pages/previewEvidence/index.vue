@@ -151,7 +151,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		overflow-y: auto;
-		// white-space: nowrap;
 		&-imgBox{
 			width: calc((100% - 20rpx)/2);
 			height: 340rpx;
@@ -168,7 +167,6 @@
 		}
 	}
 	.tables {
-		// width: calc(100% - 10px);
 		margin: 10rpx 16rpx 28rpx 16rpx;
 	}
 	.fixBtn{

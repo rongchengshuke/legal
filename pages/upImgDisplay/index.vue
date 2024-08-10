@@ -89,12 +89,6 @@
 			})
 		},
 		onLoad(option) {
-			// if (uni.getStorageSync('imgArr')) {
-			// 	let imgArrs = []
-			// 	imgArrs = uni.getStorageSync('imgArr')
-			// 	this.reseveList = JSON.parse(imgArrs)
-			// 	return
-			// }
 			this.category_id = option.category_id ? option.category_id : ''
 			const imgList = JSON.parse(option.imgList)
 			this.getData(imgList)
@@ -240,7 +234,6 @@
 		padding: 10px 0px;
 		display: flex;
 		flex-wrap: wrap;
-		// white-space: nowrap;
 		&-imgBox{
 			display: inline-block;
 			width: calc((100% - 30px)/3);

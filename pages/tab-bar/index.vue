@@ -141,12 +141,4 @@
       top: -16rpx;
     }
 	}
-  ::v-deep .u-tabbar__item--active {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none;
-    -moz-user-focus: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-  }
 </style>

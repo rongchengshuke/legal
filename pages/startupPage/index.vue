@@ -41,7 +41,7 @@
       font-size: 40rpx;
       font-style: normal;
       font-weight: 600;
-      line-height: 44rpx; /* 110% */
+      line-height: 44rpx; 
       letter-spacing: -0.816rpx;
       margin-top: 64rpx;
     }

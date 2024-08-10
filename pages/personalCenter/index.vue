@@ -90,59 +90,11 @@
 				<view class="imgdec"></view>
 			</view>
 		</view>
-		<uni-popup ref="popup" background-color="#fff">
-			<view class="popup-content">
-				<view class="input-content">
-					<view class="input-list">
-						<view class="list-left">+86</view>
-						<view class="list-right"><input class="uni-input" v-model="area" /></view>
-						<uni-icons class="uni-icon" type="right" size="30"></uni-icons>
-					</view>
-					<view class="input-list">
-						<input class="uni-input" v-model="getPhone" placeholder="请输入手机号" type="number" />
-					</view>
-					<button @click="getCode" type="primary">获取验证码</button>
-				</view>
-			</view>
-		</uni-popup>
-		<uni-popup ref="secondLogin" background-color="#fff">
-			<view class="popup-content">
-				<view class="input-content">
-					<view class="input-list"><view class="list-left">+86</view>
-						<view class="list-right">
-							<input class="uni-input" v-model="area" />
-						</view>
-						<uni-icons class="uni-icon" type="right" size="30"></uni-icons>
-					</view>
-					<view class="input-list">
-						<input class="uni-input" v-model="getPhone" placeholder="请输入手机号" type="number" />
-					</view>
-					<button @click="getCode" type="primary">获取验证码</button>
-				</view>
-			</view>
-		</uni-popup>
-		<uni-popup ref="codePopup" background-color="#fff">
-			<view class="code-popup-content">
-				<view class="title">
-					<uni-icons @click="back" class="icon" type="left" size="30"></uni-icons>
-					<text>请输入验证码</text>
-				</view>
-				<view class="tips" style="margin-bottom: 40rpx;">
-					验证码已发送至+86 {{formPhone(getPhone)}}
-				</view>
-				<up-code-input :space="30" v-model="code" :focus="true" :maxlength="5"></up-code-input>
-				<view class="djs" v-if="count > 0" style="margin-top: 30rpx;">{{count}}秒后可重新发送</view>
-				<view class="djs" v-else @click="getCode" style="margin-top: 30rpx;">重新发送</view>
-				<button style="margin-top: 40rpx;" @click="login" type="primary">登录</button>
-			</view>
-		</uni-popup>
 		<tabBar :activeBar="4" />
 	</view>
 </template>
 
 <script>
-	import { getTelCode, login } from '../../api/index.js'
-	import api from '../../util/api';
 	import tabBar from '../tab-bar/index.vue'
 	export default {
 		components: { tabBar },
@@ -175,49 +127,10 @@
 			},
 		},
 		methods: {
-			// 跳转全部文档
 			jumpDocument() {
 				uni.switchTab({
           url: `/pages/documents/index`
         });
-			},
-			intelScan() {
-				uni.chooseImage({
-					count: 20,
-					sizeType: ['original', 'compressed'],
-					sourceType: ['camera'],
-					success: (resPath) => {
-						this.uploadFile(resPath.tempFilePaths, 'h5')
-					}
-				});
-			},
-			uploadFile(files, type) {
-				const urlsArr = []
-				const uploadTasks = api.myRequestUploadFile(
-					{ files, type }
-				)
-				Promise.all(uploadTasks).then((res) => {
-					res.forEach((item) => {
-						const paraseItem = JSON.parse(item)
-						if (paraseItem.code === 200) {
-							urlsArr.push(paraseItem.data[0])
-						}
-					})
-					setTimeout(() => {
-						uni.navigateTo({
-							url: `/pages/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}`
-						})
-					})
-				}).catch((err) => {
-					console.log('上传失败', err)
-				})
-			},
-			userOtherPhone() {
-				if(!this.token){
-					this.$refs['secondLogin'].open('bottom')
-				}else{
-					return
-				}
 			},
 			goUserInfo() {
 				if(!this.token){
@@ -232,29 +145,6 @@
 				uni.navigateTo({
 					url: `/pages/login/index?getPhone=${uni.getStorageSync('phone')}`
 				})
-				return
-				this.$refs['secondLogin'].open('bottom')
-			},
-			login() {
-				login({
-					phone: this.getPhone,
-					code: this.code
-				}).then(res => {
-					this.token = res.data.token
-					uni.setStorageSync('token', res.data.token);
-					uni.setStorageSync('phone', this.getPhone);
-					this.phone = this.getPhone
-					this.getPhone = ''
-					this.code = ''
-					this.count = 60
-					clearInterval(this.timer)
-					this.$refs['popup'].close()
-					this.$refs['codePopup'].close()
-					this.$refs['secondLogin'].close()
-				})
-			},
-			back() {
-				this.$refs['codePopup'].close()
 			},
 			openPopup(val) {
 				if (val === 'phone') {
@@ -262,8 +152,6 @@
 					uni.navigateTo({
 						url: '/pages/login/index'
 					})
-					return
-					this.$refs['popup'].open('bottom')
 				} else {
 					//ifdef MP-WEIXIN
 					uni.getProvider({
@@ -287,7 +175,6 @@
 					//endif
 					//ifdef H5
 					let app_id = 'xxx';
-					// 授权后重定向的回调地址。可设置为后端接口，用于接受code参数；也可设置为前端页面链接，前端接收code后，再调用后端接口，处理后续逻辑
 					let redirect_uri = 'xxx'; 
 					//静默登录
 					window.location.href =
@@ -301,56 +188,6 @@
 				var reg = /(\d{3})\d{4}(\d{4})/
 				var tel1 = tel.replace(reg, "$1****$2")
 				return tel1
-			},
-			getTimer() {
-				this.timer = setInterval(() => {
-					if (this.count == 0) {
-						clearInterval(this.timer)
-						return
-					}
-					this.count--
-				}, 1000)
-			},
-			getCode() {
-				if (!this.getPhone) {
-					this.$refs['uToastRef'].show({
-						type: 'error',
-						icon: false,
-						message: "请输入手机号",
-						complete() {
-							params.url && uni.navigateTo({
-								url: params.url
-							});
-						}
-					});
-					return
-				}
-				getTelCode({
-					phone: this.getPhone
-				}).then(res => {
-					this.$refs['codePopup'].open('bottom')
-					if (this.count == 0) {
-						this.count = 60
-						this.getTimer()
-					} else {
-						this.getTimer()
-					}
-				})
-			},
-			codeNumInputFun(e) {
-				let val = e.detail.value
-				this.code = val
-				if (val.length == 5) this.isCode = false
-				else this.isCode = true
-			},
-			codeNumBlurFun(e) {
-				let val = e.detail.value
-				this.focus = false
-				if (val.length == 5) this.isCode = false
-				else this.isCode = true
-			},
-			codefocusFun(index) {
-				this.focus = true
 			}
 		}
 	}
@@ -555,119 +392,5 @@
 				}
 			}
 		}
-	}
-
-	.popup-content {
-		height: 1000rpx;
-		background-color: #fff;
-	}
-
-	.input-content {
-		padding: 50rpx;
-		box-sizing: border-box;
-	}
-
-	.input-list {
-		position: relative;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		margin-bottom: 40rpx;
-	}
-
-	.list-left {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		width: 150rpx;
-		height: 100rpx;
-		background-color: #ccc;
-	}
-
-	.list-left:after {
-		position: absolute;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		margin: auto 0;
-		display: block;
-		width: 1px;
-		height: 60rpx;
-		background-color: #000;
-		content: '';
-	}
-
-	.list-right {
-		/* position: relative; */
-		flex: 1;
-	}
-
-	.input-list input {
-		width: 100%;
-		height: 100rpx;
-		padding: 0 20rpx;
-		box-sizing: border-box;
-		background-color: #ccc;
-	}
-
-	.input-list .uni-icon {
-		position: absolute;
-		right: 10rpx;
-	}
-
-	.code-popup-content {
-		height: calc(100vh - 88rpx);
-		padding: 20rpx;
-		box-sizing: border-box;
-		background-color: #fff;
-	}
-
-	.code-popup-content .title {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100rpx;
-	}
-
-	.title .icon {
-		position: absolute;
-		left: 0;
-	}
-
-	.phone_code_single_cinput {
-		position: fixed;
-		left: -100rpx;
-		width: 50rpx;
-		height: 50rpx;
-	}
-
-	.phone_code_single_codeinput {
-		height: 100rpx;
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.phone_code_single_codeinput>view {
-		margin-top: 5rpx;
-		margin-left: 15rpx;
-		width: 100rpx;
-		height: 100rpx;
-		line-height: 86rpx;
-		font-size: 60rpx;
-		font-weight: bold;
-		color: #313131;
-		text-align: center;
-		border-radius: 10rpx;
-	}
-
-	.phone_code_single_codeinput>view:nth-child(1) {
-		margin-left: 0rpx;
-	}
-
-	.phone_code_single {
-		margin-top: 30rpx;
-		margin-bottom: 20rpx;
 	}
 </style>
