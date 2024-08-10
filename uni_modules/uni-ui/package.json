@@ -41,7 +41,10 @@
     "dependencies": [
       "uni-badge",
       "uni-calendar",
+      "uni-card",
+      "uni-collapse",
       "uni-combox",
+      "uni-countdown",
       "uni-data-checkbox",
       "uni-data-picker",
       "uni-data-select",

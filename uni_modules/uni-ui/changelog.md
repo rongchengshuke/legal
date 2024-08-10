@@ -115,6 +115,7 @@
 - uni-forms 修复 表单校验顺序无序问题
 - uni-forms 优化 子表单组件uni-datetime-picker、uni-data-select、uni-data-picker的显示样式
 - uni-forms 优化 动态表单校验方式，废弃拼接name的方式
+- uni-breadcrumb 修复 微信小程序 separator 不显示问题
 - uni-data-checkbox 优化 在 uni-forms 中的依赖注入方式
 - uni-data-picker 修复 uni-data-picker 在 uni-forms-item 中宽度不正确的bug
 - uni-data-picker 优化 显示样式
@@ -134,6 +135,7 @@
 ## 1.4.17（2022-06-30）
 - 支持 ios 安全区
 ## 1.4.16（2022-06-06）
+- uni-breadcrumb 新增 支持 uni.scss 修改颜色
 - uni-data-select 修复 localdata 赋值不生效的 bug
 - uni-data-select 新增 支持选项禁用（数据选项设置 disabled: true 即禁用）
 - uni-data-select 修复 当 value 为 0 时选择不生效的 bug
@@ -172,12 +174,16 @@
 - uni-swipe-action 修复 h5和app端下报el错误的bug
 - uni-swipe-action 修复 HBuilderX 1.4.X 版本中，h5和app端下报错的bug
 ## 1.4.12（2022-02-19）
+- uni-collapse 修复 初始化的时候 ，open 属性失效的bug
 - uni-data-checkbox 修复 multiple 为 true 时，v-model 的值为 null 报错的 bug
 - uni-icons 优化 size 属性可以传入不带单位的字符串数值
 - uni-icons 优化 size 支持其他单位
 - uni-nav-bar 新增 left-width/right-width属性 ，可修改左右两侧的宽度
 - uni-popup 修复 safeArea 属性不能设置为false的bug
 ## 1.4.11（2022-01-21）
+- uni-collapse 修复 微信小程序resize后组件收起的bug
+- uni-countdown 修复 在微信小程序中样式不生效的bug
+- uni-countdown 新增 update 方法 ，在动态更新时间后，刷新组件
 - uni-load-more 新增 showText属性 ，是否显示文本
 - uni-load-more 修复 nvue 平台下不显示文本的bug
 - uni-load-more 修复 微信小程序平台样式选择器报警告的问题
@@ -232,6 +238,9 @@
 - uni-card 新增 shadow 卡片阴影属性
 - uni-card 取消 mode 属性，可使用组合插槽代替
 - uni-card 取消 note 属性 ，使用actions插槽代替
+- uni-collapse 优化 show-arrow 属性默认为true
+- uni-collapse 新增 show-arrow 属性，控制是否显示右侧箭头
+- uni-countdown 新增 font-size 支持自定义字体大小
 - uni-data-checkbox 修复 在uni-forms中 modelValue 中不存在当前字段，当前字段必填写也不参与校验的问题
 - uni-data-checkbox 修复 单选 list 模式下 ，icon 为 left 时，选中图标不显示的问题
 - uni-data-checkbox 修复 在 uni-forms 中重置表单，错误信息无法清除的问题
@@ -281,6 +290,8 @@
 - uni-tag type 不是 default 时，size 为 small 字体大小显示不正确
 ## 1.4.2（2021-08-20）
 - 新增 uni-ui 组件支持国际化 i18n
+- uni-collapse 优化 show-arrow 属性默认为true
+- uni-collapse 新增 show-arrow 属性，控制是否显示右侧箭头
 - uni-data-checkbox 修复 单选 list 模式下 ，icon 为 left 时，选中图标不显示的问题
 - uni-easyinput 修复 在 uni-forms 的动态表单中默认值校验不通过的 bug
 - uni-file-picker 修复 由于 0.2.11 版本引起的不能回显图片的Bug
@@ -317,6 +328,16 @@
 - uni-link 支持自定义插槽
 ## 1.3.8（2021-07-31）
 - uni-ui 组件兼容 vue3
+- uni-collapse 修复 由1.2.0版本引起的 change 事件返回 undefined 的Bug
+- uni-collapse 优化 组件示例
+- uni-collapse 新增 组件折叠动画
+- uni-collapse 新增 value\v-model 属性 ，动态修改面板折叠状态
+- uni-collapse 新增 title 插槽 ，可定义面板标题
+- uni-collapse 新增 border 属性 ，显示隐藏面板内容分隔线
+- uni-collapse 新增 title-border 属性 ，显示隐藏面板标题分隔线
+- uni-collapse 修复 resize 方法失效的Bug
+- uni-collapse 修复 change 事件返回参数不正确的Bug
+- uni-collapse 优化 H5、App 平台自动更具内容更新高度，无需调用 reszie() 方法
 - uni-data-checkbox 优化 在uni-forms组件，与label不对齐的问题
 - uni-data-checkbox 修复 单选默认值为0不能选中的Bug
 - uni-easyinput 优化 errorMessage 属性支持 Boolean 类型
@@ -371,6 +392,7 @@
 - uni-forms 修复 pattern 属性在微信小程序平台无效的问题
 ## 1.3.4（2021-06-25）
 - uni-badge 优化 示例项目
+- uni-countdown 修复 uni-countdown 重复赋值跳两秒的 bug
 - uni-easyinput 修复 passwordIcon 属性拼写错误的 bug
 - uni-forms 修复 validate-trigger属性为submit且err-show-type属性为toast时不能弹出的Bug
 - uni-forms 修复 只写setRules方法而导致校验不生效的Bug
@@ -422,6 +444,7 @@
 - uni-datetime-picker 修复 type 属性向下兼容，默认值从 date 变更为 datetime
 - uni-datetime-picker 支持日历形式的日期+时间的范围选择
 - uni-steps 修复 uni-steps 横向布局时，多行文字高度不合理的 bug
+- uni-countdown 修复 uni-countdown 不能控制倒计时的 bug
 - uni-tag 修复 royal 类型无效的bug
 - uni-tag 修复 uni-tag 宽度不自适应的bug
 - uni-tag 新增 uni-tag 支持属性 custom-style 自定义样式
