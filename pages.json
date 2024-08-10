@@ -97,7 +97,6 @@
 		"backgroundColor": "#ffffff",
 		"fontSize": "15px",
 		"custom": true,
-		// #ifndef APP-PLUS 
 		"list": [
 			{
 				"pagePath": "pages/index/index",
@@ -107,6 +106,18 @@
 			},
 			{
 				"pagePath": "pages/documents/index",
+				"iconPath": "/static/image/files.png",
+				"selectedIconPath": "static/image/filesSe.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/evidenceMenu/index",
+				"iconPath": "/static/image/files.png",
+				"selectedIconPath": "static/image/filesSe.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/personalCenter/index",
 				"iconPath": "/static/image/files.png",
 				"selectedIconPath": "static/image/filesSe.png",
 				"text": ""

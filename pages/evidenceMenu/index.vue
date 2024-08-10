@@ -10,7 +10,7 @@
 			<view class="recentHistory-list">
 				<view class="recentHistory-item" v-for="(item, index) in dataList" :key="index">
 					<view class="left">
-						<image src="/static/logo.png" /> 
+						<image src="../../static/logo.png" /> 
 						<view class="docDetail">
 							<text class="docDetailName">{{ item.catalog_name }}</text>
 							<text class="docDetailDate">{{ timestamp(item.created_time*1000) }}</text>

@@ -23,7 +23,7 @@
 			</view>
 		</view>
 		<view class="account">
-			<image src="../../static/image/wx1.png" mode="" />
+			<image src="../../static/image/wx.png" mode="" />
 			<view class="gzgzh">
 				<view class="titles">关注公众号</view>
 				<view class="desc">随时掌控产品知识及视频</view>
