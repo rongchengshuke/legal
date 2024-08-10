@@ -186,12 +186,12 @@
 			},
 			fileView(item) {
 				uni.navigateTo({
-					url: `/pages/file/index?name=${item.name}&category_id=${item.id}&type=documents`
+					url: `/pages-conts/views/file/index?name=${item.name}&category_id=${item.id}&type=documents`
 				})
 			},
 			detailsFn(item) {
 				uni.navigateTo({
-					url: `/pages/previewEvidence/index?id=${item.id}&types=img`
+					url: `/pages-conts/views/previewEvidence/index?id=${item.id}&types=img`
 				})
 			},
 			timestamp(time) {

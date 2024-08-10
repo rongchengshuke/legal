@@ -90,7 +90,7 @@
 					})
 					setTimeout(() => {
 						uni.navigateTo({
-							url: `/pages/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}`
+							url: `/pages-conts/views/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}`
 						})
 					})
 				}).catch((err) => {

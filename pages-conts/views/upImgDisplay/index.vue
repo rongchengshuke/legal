@@ -8,23 +8,6 @@
 			</view>
 		</view>
 		<view class="tables" v-if="tableData.length">
-		<!-- 	<uni-table border stripe>
-				<uni-tr>
-					<uni-th width="50" align="center">序号</uni-th>
-					<uni-th width="100" align="center">病历名称</uni-th>
-					<uni-th width="150" align="center">证明对象</uni-th>
-					<uni-th width="50" align="center">页码</uni-th>
-				</uni-tr>
-				<uni-tr v-for="(item, index) in tableData" :key="index">
-					<uni-td align="center" v-if="item.nameRowspan>0" :rowspan="item.nameRowspan">{{ item.num  }}</uni-td>
-					<uni-td align="center" v-if="item.nameRowspan>0" :rowspan="item.nameRowspan">{{ item.name }}</uni-td>
-					<uni-td align="center">
-						{{ item.obj }}
-						<div class="color-class" @click="preview(item.url)">病历图片</div>
-					</uni-td>
-					<uni-td align="center" v-if="item.page_rangeRowspan>0" :rowspan="item.page_rangeRowspan">{{ item.page_range }}</uni-td>
-				</uni-tr>
-			</uni-table> -->
 			  <table border="0" cellspacing="0" cellpadding="5">
 			    <thead>
 			      <tr>
@@ -57,8 +40,8 @@
 </template>
 
 <script>
-	import utils from '../../util/utils';
-	import api from '../../util/api';
+	import utils from '../../../util/utils';
+	import api from '../../../util/api';
 	export default {
 		data() {
 			return {
@@ -189,7 +172,6 @@
 					}
 				}).then((res) => {
 					if (res.code === 200) {
-						console.log('rrrrrrrr', res)
 						const arrs = utils.calculateRowSpansByFields(res.data.tableData, this.rowColumn);
 						this.catalogId = res.data.catalog_id;
 						this.catalog_name = res.data.catalog_name
@@ -208,11 +190,8 @@
 				}).then((res) => {
 					if (res.statusCode === 200) {
 						let oA = document.createElement("a")
-						// 设置下载的文件名
-						oA.download = `${this.catalog_name}.zip` // todo改成 当前档案的名称
-						// Blob临时路径再保存到本地
+						oA.download = `${this.catalog_name}.zip`
 						oA.href = res.tempFilePath
-						// 插入DOM并执行点击下载
 						document.body.appendChild(oA)
 						oA.click()
 						oA.remove()
@@ -297,17 +276,17 @@
 		color: #456DEC;
 	}
 }
-	table{
-		width: 100%;
-		box-sizing: border-box;
-		 border-top: 1px solid #dfe2e5; 
-		 border-left: 1px solid #dfe2e5;
-		 border: 1px solid #dfe2e5;
-	}
-	th{
-		border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;
-	}
-	td{
-		border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;
-	}
+table{
+	width: 100%;
+	box-sizing: border-box;
+		border-top: 1px solid #dfe2e5; 
+		border-left: 1px solid #dfe2e5;
+		border: 1px solid #dfe2e5;
+}
+th{
+	border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;
+}
+td{
+	border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;
+}
 </style>

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-	import api from '../../util/api';
+	import api from '../../../util/api';
 	export default {
 		data() {
 			return {

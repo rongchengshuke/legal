@@ -175,7 +175,7 @@
 					})
 					setTimeout(() => {
 						uni.navigateTo({
-							url: `/pages/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}`
+							url: `/pages-conts/views/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}`
 						})
 					})
 				}).catch((err) => {
@@ -233,7 +233,7 @@
 			},
 			timeLineFn() {
 				uni.navigateTo({
-					url: `/pages/timeline/index`
+					url: `/pages-conts/views/timeline/index`
 				})
 			},
 			viewTotal() {
@@ -255,7 +255,7 @@
 					if (res.code === 200) {
 						this.cancelFn()
 						uni.navigateTo({
-							url: `/pages/file/index?name=${this.valueInput}&category_id=${res.data.category_id}&type=index`
+							url: `/pages-conts/views/file/index?name=${this.valueInput}&category_id=${res.data.category_id}&type=index`
 						})
 					}
 				})
@@ -283,7 +283,7 @@
 			},
 			detailsFn(item) {
 				uni.navigateTo({
-					url: `/pages/previewEvidence/index?id=${item.id}&types=img`
+					url: `/pages-conts/views/previewEvidence/index?id=${item.id}&types=img`
 				})
 			},
 			timestamp(time) {

@@ -54,34 +54,41 @@
 			}
 		},
 		{
-			"path": "pages/upImgDisplay/index",
-			"style": {
-				"navigationBarTitleText": "导入病历"
-			}
-		},
-		{
-			"path": "pages/previewEvidence/index",
-			"style": {
-				"navigationBarTitleText": "预览"
-			}
-		},
-		{
 			"path": "pages/personalCenter/userInfo",
 			"style": {
 				"navigationBarTitleText": "账户"
 			}
-		},
+		}
+	],
+	"subPackages": [
 		{
-			"path": "pages/file/index",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/timeline/index",
-			"style": {
-				"navigationBarTitleText": "时间轴"
-			}
+			"root": "pages-conts",
+			"pages": [
+				{
+					"path": "views/upImgDisplay/index",
+					"style": {
+						"navigationBarTitleText": "导入病历"
+					}
+				},
+				{
+					"path": "views/previewEvidence/index",
+					"style": {
+						"navigationBarTitleText": "预览"
+					}
+				},
+				{
+					"path": "views/file/index",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "views/timeline/index",
+					"style": {
+						"navigationBarTitleText": "时间轴"
+					}
+				}
+			]
 		}
 	],
 	"globalStyle": {

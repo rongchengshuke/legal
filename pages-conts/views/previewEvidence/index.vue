@@ -35,15 +35,15 @@
       </view>
     </view>
 		<view v-if="types !== 'img'" class="fixBtn" @click="downloadFn()">
-			<image src="../../static/image/xiazai.png" mode="" />
+			<image src="../../../static/image/xiazai.png" mode="" />
 			档案下载
 		</view>
 	</view>
 </template>
 
 <script>
-	import utils from '../../util/utils';
-	import api from '../../util/api';
+	import utils from '../../../util/utils';
+	import api from '../../../util/api';
 	export default {
 		data() {
 			return {

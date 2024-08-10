@@ -13,13 +13,13 @@ titleName<template>
 			</view>
 		</view>
     <view class="upload-class" @click="uploadFn">
-      <img src="../../static/image/file.png" />
+      <img src="../../../static/image/file.png" />
     </view>
   </view>
 </template>
 <script>
-	import utils from '../../util/utils';
-	import api from '../../util/api';
+	import utils from '../../../util/utils';
+	import api from '../../../util/api';
 	export default {
 		data() {
 			return {
@@ -32,7 +32,6 @@ titleName<template>
 			}
 		},
     onLoad(option) {
-      console.log('7777777777', option)
       this.titleName = option.name
       this.typeBack = option.type
       this.category_id = option.category_id
@@ -87,7 +86,7 @@ titleName<template>
 					})
 					setTimeout(() => {
 						uni.navigateTo({
-							url: `/pages/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}&category_id=${this.category_id}`
+							url: `/pages-conts/views/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}&category_id=${this.category_id}`
 						})
 					})
 				}).catch((err) => {
@@ -101,7 +100,7 @@ titleName<template>
 			},
       detailsFn(item) {
 				uni.navigateTo({
-					url: `/pages/previewEvidence/index?id=${item.id}&types=img`
+					url: `/pages-conts/views/previewEvidence/index?id=${item.id}&types=img`
 				})
 			},
 			timestamp(time) {
