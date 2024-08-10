@@ -20,12 +20,15 @@
 				</view>
 			</view>
 		</view>
-</view>
+		<tabBar :activeBar="3" />
+	</view>
 </template>
 <script>
 	import utils from '../../util/utils';
 	import api from '../../util/api';
+	import tabBar from '../tab-bar/index.vue'
 	export default {
+		components: { tabBar },
 		data() {
 			return {
 				title: 'Hello',

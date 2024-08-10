@@ -1,18 +1,6 @@
 <script>
-	import api from './util/api';
 	export default {
 		onLaunch: function() {
-			uni.onTabBarMidButtonTap(() => {
-				uni.chooseImage({
-					count: 20,
-					sizeType: ['original', 'compressed'],
-					sourceType: ['camera'],
-					success: (resPath) => {
-						this.uploadFile(resPath.tempFilePaths, 'h5')
-						
-					}
-				});
-			})
 			console.warn('当前组件仅支持 uni_modules 目录结构 ，请升级 HBuilderX 到 3.1.0 版本以上！')
 			console.log('App Launch')
 		},
@@ -22,29 +10,7 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
-		methods: {
-			uploadFile(files, type) {
-				const urlsArr = []
-				const uploadTasks = api.myRequestUploadFile(
-					{ files, type }
-				)
-				Promise.all(uploadTasks).then((res) => {
-					res.forEach((item) => {
-						const paraseItem = JSON.parse(item)
-						if (paraseItem.code === 200) {
-							urlsArr.push(paraseItem.data[0])
-						}
-					})
-					setTimeout(() => {
-						uni.navigateTo({
-							url: `/pages/upImgDisplay/index?imgList=${JSON.stringify(urlsArr)}`
-						})
-					})
-				}).catch((err) => {
-					console.log('上传失败', err)
-				})
-			},
-		}
+		methods: {}
 	}
 </script>
 
@@ -87,5 +53,8 @@
 		img {
 			border-radius: 50%;
 		}
+	}
+	::v-deep .uni-tabbar-bottom {
+		display: none;
 	}
 </style>

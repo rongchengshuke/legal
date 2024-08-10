@@ -16,6 +16,20 @@
 			}
 		},
 		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/inputCode/index",
+			"style": {
+				"navigationBarTitleText": "输入验证码",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页"
@@ -24,7 +38,7 @@
 		{
 			"path": "pages/evidenceMenu/index",
 			"style": {
-				"navigationBarTitleText": "档案"
+				"navigationBarTitleText": "目录"
 			}
 		},
 		{
@@ -57,11 +71,16 @@
 				"navigationBarTitleText": "账户"
 			}
 		},
-
 		{
 			"path": "pages/file/index",
 			"style": {
 				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/timeline/index",
+			"style": {
+				"navigationBarTitleText": "时间轴"
 			}
 		}
 	],
@@ -77,38 +96,22 @@
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"fontSize": "15px",
+		"custom": true,
+		// #ifndef APP-PLUS 
 		"list": [
 			{
 				"pagePath": "pages/index/index",
 				"iconPath": "/static/image/home.png",
 				"selectedIconPath": "static/image/homeSe.png",
-				"text": "首页"
+				"text": ""
 			},
 			{
 				"pagePath": "pages/documents/index",
 				"iconPath": "/static/image/files.png",
 				"selectedIconPath": "static/image/filesSe.png",
-				"text": "档案"
-			},
-			{
-				"pagePath": "pages/evidenceMenu/index",
-				"iconPath": "/static/image/list.png",
-				"selectedIconPath": "static/image/listSe.png",
-				"text": "目录"
-			},
-			{
-				"pagePath": "pages/personalCenter/index",
-				"iconPath": "/static/image/my.png",
-				"selectedIconPath": "static/image/mySe.png",
-				"text": "我的"
+				"text": ""
 			}
-		],
-		"midButton": {
-			"width": "60px",
-			"height": "65px",
-			"iconPath": "/static/image/camera.png",
-			"iconWidth": "50px"
-		}
+		]
 	},
 	"uniIdRouter": {},
 	"lazyCodeLoading": "requiredComponents"

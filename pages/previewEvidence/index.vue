@@ -179,7 +179,7 @@
 		height: 80rpx;
 		margin: auto;
 		border-radius: 48rpx;
-		background: #2356FD;
+		background: #00CB9B;
 		box-shadow: 0rpx 10rpx 20rpx 0rpx #B2C4FF;
 		color: #E2EFFF;
 		text-align: center;

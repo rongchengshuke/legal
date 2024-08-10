@@ -1,6 +1,5 @@
 <template>
 	<view class="container">
-		<!-- <uni-nav-bar :fixed="true" shadow :title="titleName" /> -->
 		<view class="bgliner">
 			<view class="search-area">
 				<view class="search-area-input">
@@ -53,9 +52,9 @@
 					<image class="feature" src="../../static/image/feature3.png" mode="" />
 					<text class="title">智能扫描</text>
 				</view>
-				<view class="nav-item">
+				<view class="nav-item" @click="timeLineFn">
 					<image class="feature" src="../../static/image/feature4.png" mode="" />
-					<text class="title">其他</text>
+					<text class="title">时间轴</text>
 				</view>
 			</view>
 		</view>
@@ -78,7 +77,6 @@
 				</view>
 			</view>
 		</view>
-		
 		<!-- 导入病历选择弹窗 --开始-->
 		<uni-popup id="upPopup" ref="upPopup" type="center" background-color="#FFFFFF">
 			<view class="nav-area upImg-area">
@@ -107,12 +105,15 @@
 				<button class="btn2" type="primary" @click="btnFn">确定</button>
 			</view>
 		</uni-popup>
-</view>
+		<tabBar :activeBar="0" />
+	</view>
 </template>
 <script>
 	import utils from '../../util/utils';
 	import api from '../../util/api';
+	import tabBar from '../tab-bar/index.vue'
 	export default {
+		components: { tabBar },
 		data() {
 			return {
 				title: 'Hello',
@@ -229,6 +230,11 @@
 						this.uploadFile(resPath.tempFilePaths, 'h5')
 					}
 				});
+			},
+			timeLineFn() {
+				uni.navigateTo({
+					url: `/pages/timeline/index`
+				})
 			},
 			viewTotal() {
 				uni.switchTab({
@@ -490,8 +496,8 @@
 				align-items: center;
 				justify-content: space-between;
 				.reset-btn {
-					background: #F59B22;
-					color: #FFFFFF;
+					background: #F8F8F8;
+					color: #333333;
 				}
 				.submit-btn {
 					background: #009DFF;

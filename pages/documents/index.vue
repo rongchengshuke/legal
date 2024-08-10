@@ -34,7 +34,6 @@
 				</view>
 			</u-checkbox-group>
 		</view>
-
 		<!-- 调取的目录 -->
 		<uni-popup class="box-popup" ref="boxFile">
 			<view class="conts">
@@ -116,12 +115,15 @@
 				:content="deleteCont" @confirm="fileCoonfirm" @close="fileClose">
 			</uni-popup-dialog>
 		</uni-popup>
+		<tabBar :activeBar="1" />
 	</view>
 </template>
 <script>
 	import utils from '../../util/utils';
 	import api from '../../util/api';
+	import tabBar from '../tab-bar/index.vue'
 	export default {
+		components: { tabBar },
 		data() {
 			return {
 				title: 'Hello',

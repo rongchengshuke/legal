@@ -90,7 +90,6 @@
 				<view class="imgdec"></view>
 			</view>
 		</view>
-		
 		<uni-popup ref="popup" background-color="#fff">
 			<view class="popup-content">
 				<view class="input-content">
@@ -137,13 +136,16 @@
 				<button style="margin-top: 40rpx;" @click="login" type="primary">登录</button>
 			</view>
 		</uni-popup>
+		<tabBar :activeBar="4" />
 	</view>
 </template>
 
 <script>
 	import { getTelCode, login } from '../../api/index.js'
 	import api from '../../util/api';
+	import tabBar from '../tab-bar/index.vue'
 	export default {
+		components: { tabBar },
 		data() {
 			return {
 				phone:'',
@@ -227,7 +229,10 @@
 				}
 			},
 			immediatelyLogin() {
-				this.getPhone = this.phone
+				uni.navigateTo({
+					url: `/pages/login/index?getPhone=${uni.getStorageSync('phone')}`
+				})
+				return
 				this.$refs['secondLogin'].open('bottom')
 			},
 			login() {
@@ -254,6 +259,10 @@
 			openPopup(val) {
 				if (val === 'phone') {
 					this.getPhone = ''
+					uni.navigateTo({
+						url: '/pages/login/index'
+					})
+					return
 					this.$refs['popup'].open('bottom')
 				} else {
 					//ifdef MP-WEIXIN

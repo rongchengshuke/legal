@@ -1,8 +1,8 @@
 <template>
   <view class="container">
-    <image class="bg" src="../../static/image/qidong.png" mode="" />
-    <!-- <image class="wenzi" src="../../static/image/zhengjubao.png" mode="" /> -->
-     <view class="titles">病历宝</view>
+    <image class="bg" src="../../static/image/blb-icon.png" mode="" />
+    <view class="titles">病历宝</view>
+    <!-- <web-view src="https://39757c03g9.oicp.vip/invite?id=zhangHeng"></web-view> -->
   </view>
 </template>
 <script>
@@ -25,31 +25,25 @@
   .container {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(196deg, #E9E4F7 0%, #E4EEF7 46.78%, rgba(255, 255, 255, 0.00) 80.4%);
+    background: #00CB9B;
     display: flex;
     align-items: center;
     flex-direction: column;
     .bg {
-      width: 500rpx;
-      height: 500rpx;
-      margin-top: 200rpx;
-    }
-    .wenzi {
-      width: 240rpx;
-      height: 60rpx;
-      margin-top: 90rpx;
+      width: 228rpx;
+      height: 228rpx;
+      margin-top: 500rpx;
     }
     .titles {
-      width: 440rpx;
-      height: 60rpx;
-      margin-top: 90rpx;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 80rpx;
-      font-style:italic;
-      letter-spacing: 10rpx;
+      color: #FFF;
+      text-align: center;
+      font-family: "PingFang SC";
+      font-size: 40rpx;
+      font-style: normal;
       font-weight: 600;
+      line-height: 44rpx; /* 110% */
+      letter-spacing: -0.816rpx;
+      margin-top: 64rpx;
     }
   }
 </style>
