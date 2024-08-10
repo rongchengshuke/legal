@@ -36,15 +36,15 @@
 			}
 		},
 		{
-			"path": "pages/evidenceMenu/index",
-			"style": {
-				"navigationBarTitleText": "目录"
-			}
-		},
-		{
 			"path": "pages/documents/index",
 			"style": {
 				"navigationBarTitleText": "档案"
+			}
+		},
+		{
+			"path": "pages/evidenceMenu/index",
+			"style": {
+				"navigationBarTitleText": "目录"
 			}
 		},
 		{

@@ -80,10 +80,7 @@ uni-ui支持 HBuilderX直接新建项目模板、npm安装和单独导入个别�
 |---|---|
 |uni-badge|[数字角标](https://ext.dcloud.net.cn/plugin?name=uni-badge)|
 |uni-calendar|[日历](https://ext.dcloud.net.cn/plugin?name=uni-calendar)|
-|uni-card|[卡片](https://ext.dcloud.net.cn/plugin?name=uni-card)|
-|uni-collapse|[折叠面板](https://ext.dcloud.net.cn/plugin?name=uni-collapse)|
 |uni-combox|[组合框](https://ext.dcloud.net.cn/plugin?name=uni-combox)|
-|uni-countdown|[倒计时](https://ext.dcloud.net.cn/plugin?name=uni-countdown)|
 |uni-data-checkbox|[数据选择器](https://ext.dcloud.net.cn/plugin?name=uni-data-checkbox)|
 |uni-data-picker|[数据驱动的picker选择器](https://ext.dcloud.net.cn/plugin?name=uni-data-picker)|
 |uni-dateformat|[日期格式化](https://ext.dcloud.net.cn/plugin?name=uni-dateformat)|

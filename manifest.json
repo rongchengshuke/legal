@@ -83,17 +83,18 @@
             }
         }
     },
-    /* SDK配置 */
     "quickapp" : {},
-    /* 快应用特有相关 */
     "mp-weixin" : {
-        /* 小程序特有相关 */
         "appid" : "wxb690fb2726096965",
         "setting" : {
             "urlCheck" : false,
-            "ignoreDevUnusedFiles" : false //微信小程序 已被代码依赖分析忽略，无法被其他模块引用
+            "ignoreDevUnusedFiles" : false,
+            "minified" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "optimization":{
+            "subPackages":true
+        }
     },
     "h5" : {
         "router" : {
