@@ -1,4 +1,4 @@
-const baseUrl = 'http://blb-api.rongchengshuke.com'   
+const baseUrl = 'https://blb-api.rongchengshuke.com'   
 export const myGSSMainRequest = (options) => {
 	return new Promise((resolve, reject) => {
 		uni.showLoading({ title: '加载中', mask: true })
