@@ -14,20 +14,20 @@
 				<view class="table">
 					<!-- 表头 -->
 					<view class="row header">
-						<view class="cell">序号</view>
-						<view class="cell">病历名称</view>
-						<view class="cell">证明对象</view>
-						<view class="cell">页码</view>
+						<view class="cell num-column">序号</view>
+						<view class="cell name-column">病历名称</view>
+						<view class="cell obj-column">证明对象</view>
+						<view class="cell page-column">页码</view>
 					</view>
 					<!-- 数据行 -->
 					<view v-for="(item, index) in tableData" :key="index" class="row">
-						<view v-if="item.nameRowspan > 0" class="cell flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.num }}</view>
-						<view v-if="item.nameRowspan > 0" class="cell flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.name }}</view>
-						<view class="cell">
+						<view v-if="item.nameRowspan > 0" class="cell num-column flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.num }}</view>
+						<view v-if="item.nameRowspan > 0" class="cell name-column flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.name }}</view>
+						<view class="cell obj-column">
 							{{ item.obj }}
 							<view class="color-class" @click="preview(item.url)">病历图片</view>
 						</view>
-						<view v-if="item.page_rangeRowspan > 0" class="cell flex-center" :style="{ 'grid-row': `span ${item.page_rangeRowspan}` }">{{ item.page_range }}</view>
+						<view v-if="item.page_rangeRowspan > 0" class="cell page-column flex-center" :style="{ 'grid-row': `span ${item.page_rangeRowspan}` }">{{ item.page_range }}</view>
 					</view>
 				</view>
       </view>
@@ -207,21 +207,16 @@ td{
 }
 .table {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 80rpx 160rpx 1fr 80rpx; /* 序号和页码宽度较窄，病历名称宽度较宽 */
   border: 1px solid #ccc;
 }
 .row {
   display: contents;
 }
 .cell {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 20rpx;
+  border: 2rpx solid #ccc;
   text-align: center;
-}
-.flex-center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 .header .cell {
   font-weight: bold;
@@ -230,5 +225,10 @@ td{
 .color-class {
   color: blue;
   cursor: pointer;
+}
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 </style>
