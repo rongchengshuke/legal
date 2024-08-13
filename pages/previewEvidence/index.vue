@@ -11,27 +11,25 @@
     </view>
 		<view v-if="types !== 'img'">
       <view class="tables" v-if="tableData.length">
-				<table border="0" cellspacing="0" cellpadding="5">
-			    <thead>
-			      <tr>
-			        <th width="50" align="center">序号</th>
-			        <th width="80" align="center">病历名称</th>
-			        <th width="150" align="center">证明对象</th>
-			        <th width="50" align="center">页码</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr v-for="(item, index) in tableData" :key="index">
-			        <td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.num }}</td>
-			        <td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.name }}</td>
-			        <td align="center">
-			          {{ item.obj }}
-			          <view class="color-class" @click="preview(item.url)">病历图片</view>
-			        </td>
-			        <td align="center" v-if="item.page_rangeRowspan > 0" :rowspan="item.page_rangeRowspan">{{ item.page_range }}</td>
-			      </tr>
-			    </tbody>
-			  </table>
+				<view class="table">
+					<!-- 表头 -->
+					<view class="row header">
+						<view class="cell">序号</view>
+						<view class="cell">病历名称</view>
+						<view class="cell">证明对象</view>
+						<view class="cell">页码</view>
+					</view>
+					<!-- 数据行 -->
+					<view v-for="(item, index) in tableData" :key="index" class="row">
+						<view v-if="item.nameRowspan > 0" class="cell flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.num }}</view>
+						<view v-if="item.nameRowspan > 0" class="cell flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.name }}</view>
+						<view class="cell">
+							{{ item.obj }}
+							<view class="color-class" @click="preview(item.url)">病历图片</view>
+						</view>
+						<view v-if="item.page_rangeRowspan > 0" class="cell flex-center" :style="{ 'grid-row': `span ${item.page_rangeRowspan}` }">{{ item.page_range }}</view>
+					</view>
+				</view>
       </view>
     </view>
 		<view v-if="types !== 'img'" class="fixBtn" @click="downloadFn()">
@@ -206,5 +204,31 @@ th{
 }
 td{
 	border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;
+}
+.table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #ccc;
+}
+.row {
+  display: contents;
+}
+.cell {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.header .cell {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+.color-class {
+  color: blue;
+  cursor: pointer;
 }
 </style>
