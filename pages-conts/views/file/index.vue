@@ -1,6 +1,6 @@
 titleName<template>
 	<view class="container">
-    <uni-nav-bar :fixed="true" shadow left-icon="left" :title="titleName" @clickLeft="navigateBack" />
+    <!-- <uni-nav-bar :fixed="true" shadow left-icon="left" :title="titleName" @clickLeft="navigateBack" /> -->
     <view class="recentHistory">
 			<view class="recentHistory-list">
 				<view class="recentHistory-item" v-for="(item, index) in dataList" :key="index" @click="detailsFn(item)">
@@ -33,6 +33,9 @@ titleName<template>
 		},
     onLoad(option) {
       this.titleName = option.name
+			uni.setNavigationBarTitle({
+				title: option.name
+			})
       this.typeBack = option.type
       this.category_id = option.category_id
       this.getData()
@@ -100,7 +103,7 @@ titleName<template>
 			},
       detailsFn(item) {
 				uni.navigateTo({
-					url: `/pages-conts/views/previewEvidence/index?id=${item.id}&types=img`
+					url: `/pages/previewEvidence/index?id=${item.id}&types=img`
 				})
 			},
 			timestamp(time) {
@@ -149,19 +152,19 @@ titleName<template>
     }
   }
   .upload-class {
-    width: 50px;
-    height: 50px;
+    width: 50rpx;
+    height: 50rpx;
     background: #FFFFFF;
     border-radius: 50%;
     position: absolute;
-    right: 40px;
-    bottom: 20px;
+    right: 40rpx;
+    bottom: 20rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-    img {
-      width: 20px;
-      height: 20px;
+    image {
+      width: 50rpx;
+      height: 50rpx;
     }
   }
 }

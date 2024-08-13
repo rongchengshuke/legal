@@ -191,7 +191,7 @@
 			},
 			detailsFn(item) {
 				uni.navigateTo({
-					url: `/pages-conts/views/previewEvidence/index?id=${item.id}&types=img`
+					url: `/pages/previewEvidence/index?id=${item.id}&types=img`
 				})
 			},
 			timestamp(time) {

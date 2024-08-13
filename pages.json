@@ -58,6 +58,12 @@
 			"style": {
 				"navigationBarTitleText": "账户"
 			}
+		},
+		{
+			"path": "pages/previewEvidence/index",
+			"style": {
+				"navigationBarTitleText": "预览"
+			}
 		}
 	],
 	"subPackages": [
@@ -71,15 +77,9 @@
 					}
 				},
 				{
-					"path": "views/previewEvidence/index",
-					"style": {
-						"navigationBarTitleText": "预览"
-					}
-				},
-				{
 					"path": "views/file/index",
 					"style": {
-						"navigationStyle": "custom"
+						"navigationBarTitleText": "新建文件夹"
 					}
 				},
 				{

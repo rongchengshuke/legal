@@ -8,27 +8,27 @@
 			</view>
 		</view>
 		<view class="tables" v-if="tableData.length">
-			  <table border="0" cellspacing="0" cellpadding="5">
-			    <thead>
-			      <tr>
-			        <th width="50" align="center">序号</th>
-			        <th width="80" align="center">病历名称</th>
-			        <th width="150" align="center">证明对象</th>
-			        <th width="50" align="center">页码</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr v-for="(item, index) in tableData" :key="index">
-			        <td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.num }}</td>
-			        <td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.name }}</td>
-			        <td align="center">
-			          {{ item.obj }}
-			          <div class="color-class" @click="preview(item.url)">病历图片</div>
-			        </td>
-			        <td align="center" v-if="item.page_rangeRowspan > 0" :rowspan="item.page_rangeRowspan">{{ item.page_range }}</td>
-			      </tr>
-			    </tbody>
-			  </table>
+			<table border="0" cellspacing="0" cellpadding="5">
+				<thead>
+					<tr>
+						<th width="50" align="center">序号</th>
+						<th width="80" align="center">病历名称</th>
+						<th width="150" align="center">证明对象</th>
+						<th width="50" align="center">页码</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item, index) in tableData" :key="index">
+						<td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.num }}</td>
+						<td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.name }}</td>
+						<td align="center">
+							{{ item.obj }}
+							<div class="color-class" @click="preview(item.url)">病历图片</div>
+						</td>
+						<td align="center" v-if="item.page_rangeRowspan > 0" :rowspan="item.page_rangeRowspan">{{ item.page_range }}</td>
+					</tr>
+				</tbody>
+			</table>
 		</view>
 		<view class="fixBtn">
 			<text class="btn1" @click="uploadFn(1)">拍照</text>

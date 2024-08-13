@@ -184,9 +184,9 @@
 
 			},
 			formPhone(val) {
-				var tel = '' + val
-				var reg = /(\d{3})\d{4}(\d{4})/
-				var tel1 = tel.replace(reg, "$1****$2")
+				let tel = '' + val
+				let reg = /(\d{3})\d{4}(\d{4})/
+				let tel1 = tel.replace(reg, "$1****$2")
 				return tel1
 			}
 		}

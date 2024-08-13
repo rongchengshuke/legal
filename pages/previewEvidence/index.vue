@@ -26,7 +26,7 @@
 			        <td align="center" v-if="item.nameRowspan > 0" :rowspan="item.nameRowspan">{{ item.name }}</td>
 			        <td align="center">
 			          {{ item.obj }}
-			          <div class="color-class" @click="preview(item.url)">病历图片</div>
+			          <view class="color-class" @click="preview(item.url)">病历图片</view>
 			        </td>
 			        <td align="center" v-if="item.page_rangeRowspan > 0" :rowspan="item.page_rangeRowspan">{{ item.page_range }}</td>
 			      </tr>
@@ -35,15 +35,15 @@
       </view>
     </view>
 		<view v-if="types !== 'img'" class="fixBtn" @click="downloadFn()">
-			<image src="../../../static/image/xiazai.png" mode="" />
+			<image src="../../static/image/xiazai.png" mode="" />
 			档案下载
 		</view>
 	</view>
 </template>
 
 <script>
-	import utils from '../../../util/utils';
-	import api from '../../../util/api';
+	import utils from '../../util/utils';
+	import api from '../../util/api';
 	export default {
 		data() {
 			return {
@@ -92,11 +92,8 @@
 				}).then((res) => {
 					if (res.statusCode === 200) {
 						let oA = document.createElement("a")
-						// 设置下载的文件名
-						oA.download = `${this.catalog_name}.zip` // todo改成 当前档案的名称
-						// Blob临时路径再保存到本地
+						oA.download = `${this.catalog_name}.zip`
 						oA.href = res.tempFilePath
-						// 插入DOM并执行点击下载
 						document.body.appendChild(oA)
 						oA.click()
 						oA.remove()
@@ -167,6 +164,7 @@
 		}
 	}
 	.tables {
+		// width: calc(100% - 10px);
 		margin: 10rpx 16rpx 28rpx 16rpx;
 	}
 	.fixBtn{
@@ -199,9 +197,9 @@
 table{
 	width: 100%;
 	box-sizing: border-box;
-		border-top: 1px solid #dfe2e5; 
-		border-left: 1px solid #dfe2e5;
-		border: 1px solid #dfe2e5;
+	border-top: 1px solid #dfe2e5; 
+	border-left: 1px solid #dfe2e5;
+	border: 1px solid #dfe2e5;
 }
 th{
 	border-right: 1px solid #dfe2e5; border-bottom: 1px solid #dfe2e5;

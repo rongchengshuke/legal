@@ -283,7 +283,7 @@
 			},
 			detailsFn(item) {
 				uni.navigateTo({
-					url: `/pages-conts/views/previewEvidence/index?id=${item.id}&types=img`
+					url: `/pages/previewEvidence/index?id=${item.id}&types=img`
 				})
 			},
 			timestamp(time) {
@@ -333,6 +333,11 @@
 </script>
 
 <style scoped lang="less">
+	.container {
+		height: 100vh;
+		background: #F8FAFB!important;
+		overflow-y: hidden;
+	}
 	.bgliner {
 		background: linear-gradient(221deg, #E1EEFE 0%, #F5F8FF 76.8%)!important;
 		padding-top: 32rpx;
@@ -386,6 +391,7 @@
 		}
 	}
 	.recentHistory {
+		background: #F8FAFB!important;
 		.headr {
 			padding: 20rpx 40rpx;
 			background-color: #FFFFFF;
@@ -414,7 +420,10 @@
 			}
 		}
 		&-list {
-			padding: 0rpx 40rpx;
+			height: calc(100vh - 500rpx);
+			background: #EDF2FA!important;
+			padding: 20rpx 20rpx 100rpx 20rpx;
+			overflow-y: auto;
 		}
 		&-item{
 			display: flex;

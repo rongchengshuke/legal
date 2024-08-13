@@ -57,7 +57,7 @@
 			},
 			preview(item) {
 				uni.navigateTo({
-					url: `/pages-conts/views/previewEvidence/index?id=${item.id}&types=table&catalog_name=${item.catalog_name}`
+					url: `/pages/previewEvidence/index?id=${item.id}&types=table&catalog_name=${item.catalog_name}`
 				})
 			},
 			timestamp(time) {
