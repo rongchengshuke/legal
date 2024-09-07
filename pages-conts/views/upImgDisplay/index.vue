@@ -74,6 +74,11 @@
 			const imgList = JSON.parse(option.imgList)
 			this.getData(imgList)
 		},
+		onShow() {
+			if (utils.is_weixin()) {
+				utils.pageHead()
+			}
+		},
 		methods: {
 			preview(imgs) {
 				uni.previewImage({

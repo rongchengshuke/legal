@@ -127,6 +127,9 @@
 			}
 		},
 		onShow() {
+			if (utils.is_weixin()) {
+				utils.pageHead()
+			}
 			this.getHistoricalRecord()
 			this.$refs.upPopup && this.$refs.upPopup.close()
 		},

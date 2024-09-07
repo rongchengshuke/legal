@@ -17,6 +17,7 @@
 
 <script>
 	import api from '../../../util/api';
+  import utils from '../../../util/utils';
 	export default {
 		data() {
 			return {
@@ -42,6 +43,11 @@
 		onLoad(option) {
       this.getData()
 		},
+    onShow() {
+      if (utils.is_weixin()) {
+				utils.pageHead()
+			}
+    },
 		methods: {
       getData() {
         api.myGSSMainRequest({

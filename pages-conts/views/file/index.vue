@@ -41,6 +41,9 @@ titleName<template>
       this.getData()
     },
 		async onShow() {
+			if (utils.is_weixin()) {
+				utils.pageHead()
+			}
 			await this.getData()
 		},
 		methods: {

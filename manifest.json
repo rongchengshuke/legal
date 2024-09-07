@@ -92,8 +92,8 @@
             "minified" : true
         },
         "usingComponents" : true,
-        "optimization":{
-            "subPackages":true
+        "optimization" : {
+            "subPackages" : true
         }
     },
     "h5" : {

@@ -11,14 +11,15 @@
 						<view class="login-experience">登录，体验更多功能</view>
 					</view>
 				</view>
-				<view class="bottoms">
+				<!-- <view class="bottoms">
 					<view @click="immediatelyLogin" class="sign-in-now">立即登录</view>
 					<image @click="openPopup('wx')" src="../../static/image/wx.png" mode="" />
 					<image @click="openPopup('phone')" src="../../static/image/phone.png" mode="" />
-				</view>
+				</view> -->
 			</view>
 			<view v-else class="log-state">
-				<image @click="goUserInfo" src="../../static/image/group-active.png" mode="" />
+				<image src="../../static/image/group-active.png" mode="" />
+				<!-- <image @click="goUserInfo" src="../../static/image/group-active.png" mode="" /> -->
 				<view class="login-info-phone">{{formPhone(phone)}}</view>
 			</view>
 		</view>
@@ -96,6 +97,7 @@
 
 <script>
 	import tabBar from '../tab-bar/index.vue'
+	import utils from '../../util/utils';
 	export default {
 		components: { tabBar },
 		data() {
@@ -112,6 +114,9 @@
 			}
 		},
 		async onShow() {
+			if (utils.is_weixin()) {
+				utils.pageHead()
+			}
 			this.token = uni.getStorageSync("token")
 			this.phone = uni.getStorageSync("phone")
 		},

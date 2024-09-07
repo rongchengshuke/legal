@@ -80,6 +80,11 @@
         this.getDataTable()
       }
 		},
+		onShow() {
+			if (utils.is_weixin()) {
+				utils.pageHead()
+			}
+		},
 		methods: {
 			downloadFn() {
 				api.downloadFileFn({

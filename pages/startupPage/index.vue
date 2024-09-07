@@ -10,7 +10,14 @@
 		data() {
 			return {}
 		},
-		onShow() {
+		onShow(option) {
+      const url = new URL(window.location.href)
+      const params = new URLSearchParams(url.search)
+      const token = params.get('token')
+      const phone = params.get('phone')
+      console.log('55555555', token, phone)
+      uni.setStorageSync('token', token);
+			uni.setStorageSync('phone', phone);
       setTimeout(() => {
         uni.switchTab({
           url: `/pages/index/index`

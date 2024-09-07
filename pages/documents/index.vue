@@ -139,6 +139,9 @@
 			}
 		},
 		async onShow() {
+			if (utils.is_weixin()) {
+				utils.pageHead()
+			}
 			await this.getFileData()
 			await this.getData()
 			await this.initPopup()

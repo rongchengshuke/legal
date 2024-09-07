@@ -43,4 +43,18 @@ export default {
     });  
     return newData;  
   },
+  pageHead() {
+    let pageHead= document.getElementsByTagName('uni-page-head');
+    pageHead[0].style.display = 'none'
+    let uSticky=document.getElementsByClassName('u-sticky')[0]
+    if(uSticky){
+      this.$nextTick(()=>{
+        uSticky.style.top = 0
+      })
+    }
+  },
+  is_weixin() {
+    let ua = navigator.userAgent.toLowerCase();
+    return ua.indexOf('micromessenger') != -1;
+  }
 }

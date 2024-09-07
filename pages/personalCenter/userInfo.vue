@@ -31,6 +31,7 @@
 </template>
 
 <script>
+	import utils from '../../util/utils';
 	export default{
 		data() {
 			return {
@@ -39,6 +40,9 @@
 			}
 		},
 		async onShow() {
+			if (utils.is_weixin()) {
+				utils.pageHead()
+			}
 			this.token = uni.getStorageSync("token")
 			this.phone = uni.getStorageSync("phone")
 		},
