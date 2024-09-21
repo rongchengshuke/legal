@@ -6,6 +6,7 @@
   </view>
 </template>
 <script>
+  import api from '../../util/api';
 	export default {
 		data() {
 			return {}
@@ -15,16 +16,24 @@
       const params = new URLSearchParams(url.search)
       const token = params.get('token')
       const phone = params.get('phone')
-      console.log('55555555', token, phone)
-      uni.setStorageSync('token', token);
 			uni.setStorageSync('phone', phone);
-      setTimeout(() => {
-        uni.switchTab({
-          url: `/pages/index/index`
-        });
-      }, 2000)
-    },
-		methods: {}
+      api.myGSSMainRequest({
+        url: '/api/user/externalLogin',
+        method: 'POST',
+        data: {
+          token: token
+        }
+      }).then((res) => {
+        if (res.code === 200) {
+          uni.setStorageSync('token', res.data.token);
+        }
+        setTimeout(() => {
+          uni.switchTab({
+            url: `/pages/index/index`
+          });
+        }, 2000)
+      })
+    }
 	}
 </script>
 
