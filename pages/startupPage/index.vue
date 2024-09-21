@@ -17,6 +17,11 @@
       const token = params.get('token')
       const phone = params.get('phone')
 			uni.setStorageSync('phone', phone);
+      setTimeout(() => {
+        uni.switchTab({
+          url: `/pages/index/index`
+        });
+      }, 2000)
       api.myGSSMainRequest({
         url: '/api/user/externalLogin',
         method: 'POST',
@@ -27,11 +32,6 @@
         if (res.code === 200) {
           uni.setStorageSync('token', res.data.token);
         }
-        setTimeout(() => {
-          uni.switchTab({
-            url: `/pages/index/index`
-          });
-        }, 2000)
       })
     }
 	}
