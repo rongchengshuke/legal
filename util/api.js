@@ -3,9 +3,9 @@ export const myGSSMainRequest = (options) => {
 	return new Promise((resolve, reject) => {
 		uni.showLoading({ title: '加载中', mask: true })
 		let header = {
-			Authorization: uni.getStorageSync("token") || ''
+			Authorization: uni.getStorageSync("tokenBlb") || ''
 		}
-		console.log('^^^^^^^^^^6', uni.getStorageSync("token"))
+		console.log('^^^^^^^^^^6', uni.getStorageSync("tokenBlb"))
 		if (options.requestType) {
 			header["Content-Type"] = options.requestType;
 		}
@@ -19,7 +19,7 @@ export const myGSSMainRequest = (options) => {
 				if (res.data.code === 200) {
 					resolve(res.data)
 				} else if (res.data.code === 201) {
-					uni.setStorageSync('token', '');
+					uni.setStorageSync('tokenBlb', '');
 					uni.showToast({ title: res.data.message, icon: 'none' })
 				} else {
 					uni.showToast({ title: res.data.message, icon: 'none' })
@@ -37,7 +37,7 @@ export const downloadFileFn = (options) => {
 	return new Promise((resolve, reject) => {
 		uni.showLoading({ title: '加载中', mask: true })
 		let header = {
-			Authorization: uni.getStorageSync("token") || '',
+			Authorization: uni.getStorageSync("tokenBlb") || '',
 		}
 		if (options.requestType) {
 			header["Content-Type"] = options.requestType;
@@ -66,7 +66,7 @@ export const downloadFileFn = (options) => {
 export const myRequestUploadFile = (options) => {
 	uni.showLoading({ title: '加载中', mask: true })
 	let header = {
-		Authorization: uni.getStorageSync("token") || ''
+		Authorization: uni.getStorageSync("tokenBlb") || ''
 	}
 	if (options.requestType) {
 		header["Content-Type"] = options.requestType;

@@ -3,7 +3,7 @@
 	<view class="content">
 		<up-toast ref="uToastRef"></up-toast>
 		<view class="heads">
-			<view v-if="!token" class="no-logged-state">
+			<view v-if="!tokenBlb" class="no-logged-state">
 				<view class="tops">
 					<image src="../../static/image/group.png" mode="" />
 					<view class="rights">
@@ -110,18 +110,18 @@
 				code: "", // 验证码  
 				focus: true, // 焦点
 				isCode: true,
-				token: ''
+				tokenBlb: ''
 			}
 		},
 		async onShow() {
 			if (utils.is_weixin()) {
 				utils.pageHead()
 			}
-			this.token = uni.getStorageSync("token")
+			this.tokenBlb = uni.getStorageSync("tokenBlb")
 			this.phone = uni.getStorageSync("phone")
 		},
 		async onLoad() {
-			this.token = uni.getStorageSync("token")
+			this.tokenBlb = uni.getStorageSync("tokenBlb")
 			this.phone = uni.getStorageSync("phone")
 		},
 		watch: {
@@ -138,7 +138,7 @@
         });
 			},
 			goUserInfo() {
-				if(!this.token){
+				if(!this.tokenBlb){
 					return
 				}else{
 					uni.navigateTo({

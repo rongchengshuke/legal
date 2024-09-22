@@ -30,7 +30,7 @@
         }
       }).then((res) => {
         if (res.code === 200) {
-          uni.setStorageSync('token', res.data.token);
+          uni.setStorageSync('tokenBlb', res.data.token);
         }
       })
     }

@@ -36,19 +36,19 @@
 		data() {
 			return {
 				phone:'',
-				token: ''
+				tokenBlb: ''
 			}
 		},
 		async onShow() {
 			if (utils.is_weixin()) {
 				utils.pageHead()
 			}
-			this.token = uni.getStorageSync("token")
+			this.tokenBlb = uni.getStorageSync("token")
 			this.phone = uni.getStorageSync("phone")
 		},
 		methods:{
 			async loginout(){
-				await uni.setStorageSync('token', '');
+				await uni.setStorageSync('tokenBlb', '');
 				await uni.navigateBack()
 			},
 			formPhone(val) {

@@ -28,7 +28,7 @@
 				timer: null, 
 				count: 60, 
 				code: "",  
-				token: ''
+				tokenBlb: ''
 			}
 		},
 		onLoad(option) {
@@ -43,8 +43,8 @@
 		methods:{
       loginFn() {
 				login({ phone: this.getPhone, code: this.code }).then(res => {
-					this.token = res.data.token
-					uni.setStorageSync('token', res.data.token);
+					this.tokenBlb = res.data.token
+					uni.setStorageSync('tokenBlb', res.data.token);
 					uni.setStorageSync('phone', this.getPhone);
 					this.phone = this.getPhone
 					this.getPhone = ''

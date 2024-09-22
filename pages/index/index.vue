@@ -209,7 +209,7 @@
 				// #endif
 			},
 			upPopupOpen(){
-				if (uni.getStorageSync("token")) {
+				if (uni.getStorageSync("tokenBlb")) {
 					this.$refs.upPopup.open()
 				} else {
 					uni.showToast({ title: 'Header authorization 参数值不能为空，请重新登录', icon: 'none' })
