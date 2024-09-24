@@ -1,6 +1,7 @@
 <!-- 时间轴 -->
 <template>
 	<view class="container" :style="{height: scrollHeight + 'px'}">
+    <up-navbar title="时间轴" leftIconSize="16" showBack="false" :autoBack="true" />
     <view class="item-class" v-for="(item, index) in tableData" :key="index">
       <view class="tops">
         <view class="dot"></view>
@@ -44,9 +45,9 @@
       this.getData()
 		},
     onShow() {
-      if (utils.is_weixin()) {
-				utils.pageHead()
-			}
+      // if (utils.is_weixin()) {
+			// 	utils.pageHead()
+			// }
     },
 		methods: {
       getData() {
@@ -75,6 +76,19 @@
 </script>
 
 <style lang="less" scoped>
+page {
+	padding-top: 140rpx;
+}
+::v-deep .u-navbar--fixed {
+	top: 0rpx!important;
+	z-index: 99999!important;
+	.u-navbar__content {
+		padding-top: 46rpx!important;
+	}
+}
+::v-deep .u-navbar__content__left {
+	padding-top: 46rpx;
+}
 .container {
   overflow-y: auto;
   .item-class {

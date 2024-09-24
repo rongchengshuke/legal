@@ -134,11 +134,11 @@
 			}
 		}
     .camer-class {
-      width: 100rpx;
-      height: 100rpx;
+      width: 120rpx;
+      height: 120rpx;
       position: absolute;
       z-index: 1000;
-      top: -16rpx;
+      top: -30rpx;
     }
 	}
 </style>

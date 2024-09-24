@@ -1,10 +1,11 @@
 <!-- 档案 -->
 <template>
 	<view class="container" :style="{height: scrollHeight + 'px'}">
+		<up-navbar title="预览" leftIconSize="16" showBack="false" :autoBack="true" />
     <view v-if="types !== 'table'">
       <view  class="prelist" v-if="reseveList.length">
         <view class="prelist-imgBox" v-for="(item, index) in reseveList" :key="index" 
-					:class="{'mr20': index / 2 ===0 }">
+					:class="[index / 2 ===0 ? 'mr20' : '']">
           <image :src="item" :mode="aspectFillType" @click="preview(item)" />
         </view>
       </view>
@@ -21,13 +22,16 @@
 					</view>
 					<!-- 数据行 -->
 					<view v-for="(item, index) in tableData" :key="index" class="row">
-						<view v-if="item.nameRowspan > 0" class="cell num-column flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.num }}</view>
-						<view v-if="item.nameRowspan > 0" class="cell name-column flex-center" :style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.name }}</view>
+						<view v-if="item.nameRowspan > 0" class="cell num-column flex-center" 
+							:style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.num }}</view>
+						<view v-if="item.nameRowspan > 0" class="cell name-column flex-center" 
+							:style="{ 'grid-row': `span ${item.nameRowspan}` }">{{ item.name }}</view>
 						<view class="cell obj-column">
 							{{ item.obj }}
 							<view class="color-class" @click="preview(item.url)">病历图片</view>
 						</view>
-						<view v-if="item.page_rangeRowspan > 0" class="cell page-column flex-center" :style="{ 'grid-row': `span ${item.page_rangeRowspan}` }">{{ item.page_range }}</view>
+						<view v-if="item.page_rangeRowspan > 0" class="cell page-column flex-center" 
+							:style="{ 'grid-row': `span ${item.page_rangeRowspan}` }">{{ item.page_range }}</view>
 					</view>
 				</view>
       </view>
@@ -81,9 +85,9 @@
       }
 		},
 		onShow() {
-			if (utils.is_weixin()) {
-				utils.pageHead()
-			}
+			// if (utils.is_weixin()) {
+			// 	utils.pageHead()
+			// }
 		},
 		methods: {
 			downloadFn() {
@@ -143,6 +147,20 @@
 </script>
 
 <style scoped lang="less">
+page {
+	padding-top: 140rpx;
+}
+::v-deep .u-navbar--fixed {
+	top: 0rpx!important;
+	z-index: 99999!important;
+	.u-navbar__content {
+		padding-top: 46rpx!important;
+	}
+}
+::v-deep .u-navbar__content__left {
+	padding-top: 46rpx;
+}
+
 .container {
   overflow-y: auto;
 	padding-bottom: 20rpx;

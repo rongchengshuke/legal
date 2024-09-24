@@ -1,4 +1,5 @@
 import App from './App'
+import './util/webview'
 // import Vue from 'vue'
 // import * as api from './util/api.js'
 // Object.keys(api).forEach(key => {

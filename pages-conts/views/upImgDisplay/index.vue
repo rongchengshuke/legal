@@ -1,6 +1,7 @@
 <!-- 档案 -->
 <template>
 	<view class="container" :style="{ height: scrollHeight + 'px' }">
+		<up-navbar title="导入病历" leftIconSize="16" showBack="false" :autoBack="true" />
 		<view class="prelist" v-if="reseveList.length > 0">
 			<view class="prelist-imgBox" v-for="(item, index) in reseveList" :key="index">
 				<image :src="item" @click="preview(item)" />
@@ -75,9 +76,9 @@
 			this.getData(imgList)
 		},
 		onShow() {
-			if (utils.is_weixin()) {
-				utils.pageHead()
-			}
+			// if (utils.is_weixin()) {
+			// 	utils.pageHead()
+			// }
 		},
 		methods: {
 			preview(imgs) {
@@ -209,6 +210,19 @@
 </script>
 
 <style scoped lang="less">
+page {
+	padding-top: 140rpx;
+}
+::v-deep .u-navbar--fixed {
+	top: 0rpx!important;
+	z-index: 99999!important;
+	.u-navbar__content {
+		padding-top: 46rpx!important;
+	}
+}
+::v-deep .u-navbar__content__left {
+	padding-top: 46rpx;
+}
 .container {
 	overflow-y: auto;
 	.prelist {

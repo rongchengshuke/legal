@@ -1,6 +1,7 @@
 <script>
 	export default {
 		onLaunch: function() {
+			this.initScript()
 			console.warn('当前组件仅支持 uni_modules 目录结构 ，请升级 HBuilderX 到 3.1.0 版本以上！')
 			console.log('App Launch')
 		},
@@ -10,7 +11,16 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
-		methods: {}
+		methods: {
+			initScript() {
+				var script = document.createElement('script');
+				script.type = "text/javascript";
+				script.async = true;
+				script.src = "./static/js/uni.webview.1.5.2.js";
+				document.head.appendChild(script);
+				console.log(wx, "wx");
+			}
+		}
 	}
 </script>
 

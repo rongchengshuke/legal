@@ -49,7 +49,7 @@ export default {
     let uSticky=document.getElementsByClassName('u-sticky')[0]
     if(uSticky){
       this.$nextTick(()=>{
-        uSticky.style.top = 0
+        uSticky.style.top = 30
       })
     }
   },

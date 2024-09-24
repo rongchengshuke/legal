@@ -1,5 +1,6 @@
 <template>
 	<view class="container">
+		<up-navbar title="档案" leftIconSize="16" showBack="false" :autoBack="false" />
 		<view class="search-area">
 			<view class="search-area-input">
 				<uni-icons class="input-uni-icon" type="search" size="18" color="#999" />
@@ -49,7 +50,7 @@
 					<view class="recentHistory">
 						<u-checkbox-group class="box-class" v-model="checkedArr" @change="changeBoxselected">
 							<view class="cont" v-for="(item, index) in dataList" :key="index" 
-								:class="{ 'active-bg': checkedArr.includes(item.id) }">
+								:class="[checkedArr.includes(item.id) ? 'active-bg' : '']">
 								<div class="lefts">
 									<image :src="item.thumb_img" @click.stop="preview(item.thumb_img)" /> 
 									<view class="docDetail">
@@ -139,9 +140,6 @@
 			}
 		},
 		async onShow() {
-			if (utils.is_weixin()) {
-				utils.pageHead()
-			}
 			await this.getFileData()
 			await this.getData()
 			await this.initPopup()
@@ -272,6 +270,7 @@
 				this.checkedArr = arr
 			},
 			deleteTask() {
+				console.log('%%%%%%--测试删除----')
 				this.$refs.deleteBox.open()
 			},
 			boxClose() {
@@ -323,6 +322,19 @@
 </script>
 
 <style scoped lang="less">
+	page {
+		padding-top: 140rpx;
+	}
+	::v-deep .u-navbar--fixed {
+		top: 0rpx!important;
+		z-index: 99999!important;
+		.u-navbar__content {
+			padding-top: 46rpx!important;
+		}
+	}
+	::v-deep .u-navbar__content__left {
+		display: none;
+	}
 	.container {
 		padding: 20rpx;
 		.search-area{
@@ -402,6 +414,7 @@
 			height: 400rpx;
 			background: #FFFFFF;
 			border-radius: 20rpx 20rpx 0px 0px;
+			padding-bottom: 40rpx;
 			.close-btn {
 				padding: 20rpx;
 				display: flex;
@@ -429,7 +442,7 @@
 		}
 	}
 	.re-class {
-		z-index: 999;
+		z-index: 99999;
 		background: #FFFFFF;
 		.titles, .inputs {
 			width: calc(100% - 60rpx);
@@ -446,6 +459,7 @@
 			display: flex;
 			margin-top: 20rpx;
 			margin-bottom: 40rpx;
+			padding-bottom: 80rpx;
 			.btn1 {
 				margin-right: 40rpx;
 			}
@@ -455,7 +469,7 @@
 		}
 	}
 	::v-deep .del-class {
-		z-index: 9999;
+		z-index: 999999;
 		.uni-popup-dialog {
 			.uni-dialog-title {
 				justify-content: flex-start;
@@ -474,11 +488,12 @@
 		}
 	}
 	.box-popup {
-		z-index: 999;
+		z-index: 99999;
 		.conts {
 			width: 100vw;
-			height: 100vh;
+			height: calc(100vh - 160rpx);
 			background: #FFFFFF!important;
+			padding: 60rpx 0rpx 100rpx 0rpx;
 			.hears {
 				height: 98rpx;
 				line-height: 98rpx;
@@ -496,7 +511,7 @@
 				}
 			}
 			.centers {
-				height: calc(100vh - 220rpx);
+				height: calc(100vh - 320rpx);
 				padding: 10rpx 0px;
 				overflow: auto;
 			}

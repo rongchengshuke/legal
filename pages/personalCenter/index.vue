@@ -1,6 +1,7 @@
 <!-- 档案 -->
 <template>
 	<view class="content">
+		<up-navbar title="我的" leftIconSize="16" showBack="false" :autoBack="false" />
 		<up-toast ref="uToastRef"></up-toast>
 		<view class="heads">
 			<view v-if="!tokenBlb" class="no-logged-state">
@@ -11,6 +12,7 @@
 						<view class="login-experience">登录，体验更多功能</view>
 					</view>
 				</view>
+				<!-- 注释 -->
 				<!-- <view class="bottoms">
 					<view @click="immediatelyLogin" class="sign-in-now">立即登录</view>
 					<image @click="openPopup('wx')" src="../../static/image/wx.png" mode="" />
@@ -200,7 +202,17 @@
 
 <style lang="scss" scoped>
 	page {
-		padding: 32rpx 40rpx;
+		padding-top: 140rpx;
+	}
+	::v-deep .u-navbar--fixed {
+		top: 0rpx!important;
+		z-index: 99999!important;
+		.u-navbar__content {
+			padding-top: 46rpx!important;
+		}
+	}
+	::v-deep .u-navbar__content__left {
+		display: none;
 	}
 	.content {
 		.heads {

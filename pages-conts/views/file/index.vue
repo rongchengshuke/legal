@@ -1,6 +1,6 @@
 titleName<template>
 	<view class="container">
-    <!-- <uni-nav-bar :fixed="true" shadow left-icon="left" :title="titleName" @clickLeft="navigateBack" /> -->
+		<up-navbar :title="titleName" leftIconSize="16" showBack="false" :autoBack="true" />
     <view class="recentHistory">
 			<view class="recentHistory-list">
 				<view class="recentHistory-item" v-for="(item, index) in dataList" :key="index" @click="detailsFn(item)">
@@ -13,7 +13,7 @@ titleName<template>
 			</view>
 		</view>
     <view class="upload-class" @click="uploadFn">
-      <img src="../../../static/image/file.png" />
+      <img class="image" src="../../../static/image/file.png" />
     </view>
   </view>
 </template>
@@ -117,14 +117,18 @@ titleName<template>
 </script>
 
 <style scoped lang="less">
-::v-deep .uni-navbar__content {
-  background-color: rgba(248, 248, 248)!important;
-  border: 0px!important;
-  .uni-navbar__header {
-    background-color: rgba(248, 248, 248)!important;
-    color: rgba(0,0,0)!important;
-    border: 0px!important;
-  }
+page {
+	padding-top: 140rpx;
+}
+::v-deep .u-navbar--fixed {
+	top: 0rpx!important;
+	z-index: 99999!important;
+	.u-navbar__content {
+		padding-top: 46rpx!important;
+	}
+}
+::v-deep .u-navbar__content__left {
+	padding-top: 46rpx!important;
 }
 .container {
   .recentHistory{
@@ -165,7 +169,7 @@ titleName<template>
     display: flex;
     align-items: center;
     justify-content: center;
-    image {
+    .image {
       width: 50rpx;
       height: 50rpx;
     }

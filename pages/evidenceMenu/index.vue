@@ -1,5 +1,6 @@
 <template>
 	<view class="container">
+		<up-navbar title="目录" leftIconSize="16" showBack="false" :autoBack="false" />
 		<view class="search-area">
 			<view class="search-area-input">
 				<uni-icons class="input-uni-icon" type="search" size="18" color="#999" />
@@ -37,9 +38,9 @@
 			}
 		},
 		async onShow() {
-			if (utils.is_weixin()) {
-				utils.pageHead()
-			}
+			// if (utils.is_weixin()) {
+			// 	utils.pageHead()
+			// }
 			await this.getData()
 		},
 		methods: {
@@ -71,6 +72,19 @@
 </script>
 
 <style scoped lang="less">
+	page {
+		padding-top: 140rpx;
+	}
+	::v-deep .u-navbar--fixed {
+		top: 0rpx!important;
+		z-index: 99999!important;
+		.u-navbar__content {
+			padding-top: 46rpx!important;
+		}
+	}
+	::v-deep .u-navbar__content__left {
+		display: none;
+	}
 	.container {
 		padding: 20rpx;
 		.search-area{

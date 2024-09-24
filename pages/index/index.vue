@@ -1,10 +1,11 @@
 <template>
 	<view class="container">
+		<up-navbar title="首页" @leftClick="backClick" leftIconColor="#000000" leftIconSize="16" :autoBack="true" />
 		<view class="bgliner">
 			<view class="search-area">
 				<view class="search-area-input">
 					<uni-easyinput suffixIcon="search" v-model="valueSearch" placeholder="请输入关键字" @iconClick="iconClick" />
-					<uni-icons class="set-icon" type="settings" size="40" @click="filterTime" />
+					<uni-icons class="set-icon" type="settings" size="30" @click="filterTime" />
 				</view>
 			</view>
 			<uni-drawer ref="showRight" mode="right" :mask-click="true">
@@ -127,13 +128,21 @@
 			}
 		},
 		onShow() {
-			if (utils.is_weixin()) {
-				utils.pageHead()
-			}
+			// if (utils.is_weixin()) {
+			// 	utils.pageHead()
+			// }
 			this.getHistoricalRecord()
 			this.$refs.upPopup && this.$refs.upPopup.close()
 		},
 		methods: {
+			backClick() {
+				console.log('44444444444')
+				uni.webView.postMessage({
+					data: {
+						action: 'uni-app', //可自己随意定义，需要与app中接收通信的方法对应
+					}
+				})
+			},
 			filterTime() {
 				this.$refs.showRight.open();
 			},
@@ -336,6 +345,19 @@
 </script>
 
 <style scoped lang="less">
+	page {
+		padding-top: 140rpx;
+	}
+	::v-deep .u-navbar--fixed {
+		top: 0rpx!important;
+		z-index: 99999!important;
+		.u-navbar__content {
+			padding-top: 46rpx;
+		}
+	}
+	::v-deep .u-navbar__content__left {
+		padding-top: 46rpx;
+	}
 	.container {
 		height: 100vh;
 		background: #F8FAFB!important;
@@ -355,8 +377,8 @@
 			align-items: center;
 			justify-content: space-between;
 			::v-deep .is-input-border {
-				height: 80rpx;
-				border-radius: 98rpx;
+				height: 70rpx;
+				border-radius:50rpx;
 				border: 4rpx solid #000000!important;
 				font-size: 28rpx;
 			}

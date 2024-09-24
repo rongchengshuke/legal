@@ -32,25 +32,29 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/documents/index",
 			"style": {
-				"navigationBarTitleText": "档案"
+				"navigationBarTitleText": "档案",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/evidenceMenu/index",
 			"style": {
-				"navigationBarTitleText": "目录"
+				"navigationBarTitleText": "目录",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/personalCenter/index",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -62,7 +66,8 @@
 		{
 			"path": "pages/previewEvidence/index",
 			"style": {
-				"navigationBarTitleText": "预览"
+				"navigationBarTitleText": "预览",
+				"navigationStyle": "custom"
 			}
 		}
 	],
@@ -73,19 +78,22 @@
 				{
 					"path": "views/upImgDisplay/index",
 					"style": {
-						"navigationBarTitleText": "导入病历"
+						"navigationBarTitleText": "导入病历",
+						"navigationStyle": "custom"
 					}
 				},
 				{
 					"path": "views/file/index",
 					"style": {
-						"navigationBarTitleText": "新建文件夹"
+						"navigationBarTitleText": "新建文件夹",
+						"navigationStyle": "custom"
 					}
 				},
 				{
 					"path": "views/timeline/index",
 					"style": {
-						"navigationBarTitleText": "时间轴"
+						"navigationBarTitleText": "时间轴",
+						"navigationStyle": "custom"
 					}
 				}
 			]
