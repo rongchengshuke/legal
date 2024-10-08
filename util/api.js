@@ -5,7 +5,6 @@ export const myGSSMainRequest = (options) => {
 		let header = {
 			Authorization: uni.getStorageSync("tokenBlb") || ''
 		}
-		console.log('^^^^^^^^^^6', uni.getStorageSync("tokenBlb"))
 		if (options.requestType) {
 			header["Content-Type"] = options.requestType;
 		}
