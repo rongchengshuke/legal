@@ -26,8 +26,8 @@
         url: '/api/user/externalLogin',
         method: 'POST',
         data: {
-          // token: token
-          token: '9f7ddeb408c64a7c494b7e70b9f5e69504a33de1'
+          token: token
+          // token: '9f7ddeb408c64a7c494b7e70b9f5e69504a33de1'
         }
       }).then((res) => {
         if (res.code === 200) {
