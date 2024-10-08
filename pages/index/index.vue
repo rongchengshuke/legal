@@ -136,7 +136,6 @@
 		},
 		methods: {
 			backClick() {
-				console.log('44444444444')
 				uni.webView.postMessage({
 					data: {
 						action: 'uni-app', //可自己随意定义，需要与app中接收通信的方法对应

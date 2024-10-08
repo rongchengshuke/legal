@@ -22,10 +22,11 @@
 			<view v-else class="log-state">
 				<image src="../../static/image/group-active.png" mode="" />
 				<!-- <image @click="goUserInfo" src="../../static/image/group-active.png" mode="" /> -->
-				<view class="login-info-phone">{{formPhone(phone)}}</view>
+				<view v-if="phone" class="login-info-phone">{{ formPhone(phone) }}</view>
+				<view v-if="!phone" class="login-info-phone">{{ wxName }}</view>
 			</view>
 		</view>
-		<view class="account">
+		<!-- <view class="account">
 			<image src="../../static/image/wx.png" mode="" />
 			<view class="gzgzh">
 				<view class="titles">关注公众号</view>
@@ -92,7 +93,7 @@
 				</view>
 				<view class="imgdec"></view>
 			</view>
-		</view>
+		</view> -->
 		<tabBar :activeBar="4" />
 	</view>
 </template>
@@ -112,7 +113,8 @@
 				code: "", // 验证码  
 				focus: true, // 焦点
 				isCode: true,
-				tokenBlb: ''
+				tokenBlb: '',
+				wxName: ''
 			}
 		},
 		async onShow() {
@@ -121,10 +123,11 @@
 			}
 			this.tokenBlb = uni.getStorageSync("tokenBlb")
 			this.phone = uni.getStorageSync("phone")
+			this.phone = uni.getStorageSync("phone")
 		},
 		async onLoad() {
 			this.tokenBlb = uni.getStorageSync("tokenBlb")
-			this.phone = uni.getStorageSync("phone")
+			this.wxName = uni.getStorageSync("wxName")
 		},
 		watch: {
 			count(val) {
